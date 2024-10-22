@@ -503,465 +503,672 @@ impl<'engine> Executor<'engine> {
                 Instr::F64Store { .. } => 0xda484e6b7bd8d5db,
                 Instr::F64StoreOffset16 { .. } => 0xac6256a3ca2605cb,
                 Instr::F64StoreAt { .. } => 0xe366beba3742040b,
-                Instr::I32Eq { lhs, .. } => self.get_register(lhs).to_bits() ^ 0x9aa2499f95dc3711,
-                Instr::I32EqImm16 { lhs, .. } => {
+                ////////////////////////////////////////////////////////////////////////
+                Instr::I32Eq { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0x9aa2499f95dc3711
+                }
+                Instr::I32EqImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0x92ce6da978fdc40f
                 }
-                Instr::I64Eq { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xda860a17cb3b1a8b,
-                Instr::I64EqImm16 { lhs, .. } => {
+                Instr::I64Eq { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xda860a17cb3b1a8b
+                }
+                Instr::I64EqImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0x89c423624314bf89
                 }
-                Instr::I32Ne { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xcbad0daca146769f,
-                Instr::I32NeImm16 { lhs, .. } => {
+                Instr::I32Ne { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xcbad0daca146769f
+                }
+                Instr::I32NeImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xdca831c7fde0f85f
                 }
-                Instr::I64Ne { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xb0b2865912833697,
-                Instr::I64NeImm16 { lhs, .. } => {
+                Instr::I64Ne { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xb0b2865912833697
+                }
+                Instr::I64NeImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xbafcb515ea4df971
                 }
-                Instr::I32LtS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xbfbff0c826a235f1,
-                Instr::I32LtU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0x9081189b58e72897,
-                Instr::I32LtSImm16 { lhs, .. } => {
+                Instr::I32LtS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xbfbff0c826a235f1
+                }
+                Instr::I32LtU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0x9081189b58e72897
+                }
+                Instr::I32LtSImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0x96d3c1dc900e1187
                 }
-                Instr::I32LtUImm16 { lhs, .. } => {
+                Instr::I32LtUImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0x9025ddff9d4de1b9
                 }
-                Instr::I64LtS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xffe594b2eb58493d,
-                Instr::I64LtU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0x9181211dcc10809b,
-                Instr::I64LtSImm16 { lhs, .. } => {
+                Instr::I64LtS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xffe594b2eb58493d
+                }
+                Instr::I64LtU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0x9181211dcc10809b
+                }
+                Instr::I64LtSImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xebbe15881dcd9e57
                 }
-                Instr::I64LtUImm16 { lhs, .. } => {
+                Instr::I64LtUImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xfd542ad322324a27
                 }
-                Instr::I32GtS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xe36a0bdacb5debf3,
-                Instr::I32GtU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xa5deeacd3be1c44b,
-                Instr::I32GtSImm16 { lhs, .. } => {
+                Instr::I32GtS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xe36a0bdacb5debf3
+                }
+                Instr::I32GtU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xa5deeacd3be1c44b
+                }
+                Instr::I32GtSImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0x9a7f06186b3795c3
                 }
-                Instr::I32GtUImm16 { lhs, .. } => {
+                Instr::I32GtUImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xaaf1e009bd26fd7b
                 }
-                Instr::I64GtS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xc548cf95ce91a7b5,
-                Instr::I64GtU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xa68907e0fab9fb93,
-                Instr::I64GtSImm16 { lhs, .. } => {
+                Instr::I64GtS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xc548cf95ce91a7b5
+                }
+                Instr::I64GtU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xa68907e0fab9fb93
+                }
+                Instr::I64GtSImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xf62c848e8eef17e9
                 }
-                Instr::I64GtUImm16 { lhs, .. } => {
+                Instr::I64GtUImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0x8a5c73b85ba194e1
                 }
-                Instr::I32LeS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xbc5f6381dd176bb1,
-                Instr::I32LeU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xf7f780c2e00e18af,
-                Instr::I32LeSImm16 { lhs, .. } => {
+                Instr::I32LeS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xbc5f6381dd176bb1
+                }
+                Instr::I32LeU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xf7f780c2e00e18af
+                }
+                Instr::I32LeSImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xc79fde79bd40aa77
                 }
-                Instr::I32LeUImm16 { lhs, .. } => {
+                Instr::I32LeUImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xf9cc6a0ad9269149
                 }
-                Instr::I64LeS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xc7fac5fcb8f8ed55,
-                Instr::I64LeU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xc1560dd513285d29,
-                Instr::I64LeSImm16 { lhs, .. } => {
+                Instr::I64LeS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xc7fac5fcb8f8ed55
+                }
+                Instr::I64LeU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xc1560dd513285d29
+                }
+                Instr::I64LeSImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0x99c89d3bbb73545d
                 }
-                Instr::I64LeUImm16 { lhs, .. } => {
+                Instr::I64LeUImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xa3524cb19ca06bb5
                 }
-                Instr::I32GeS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0x98bef5ced76c7645,
-                Instr::I32GeU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xd53ed9432d2a8143,
-                Instr::I32GeSImm16 { lhs, .. } => {
+                Instr::I32GeS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0x98bef5ced76c7645
+                }
+                Instr::I32GeU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xd53ed9432d2a8143
+                }
+                Instr::I32GeSImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xfee355988dee53db
                 }
-                Instr::I32GeUImm16 { lhs, .. } => {
+                Instr::I32GeUImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xbb62bd7c6348e5c3
                 }
-                Instr::I64GeS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xd8f40b0c313c453d,
-                Instr::I64GeU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0x98bfaac3f19897e1,
-                Instr::I64GeSImm16 { lhs, .. } => {
+                Instr::I64GeS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xd8f40b0c313c453d
+                }
+                Instr::I64GeU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0x98bfaac3f19897e1
+                }
+                Instr::I64GeSImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0x8956eaaa98c2e647
                 }
-                Instr::I64GeUImm16 { lhs, .. } => {
+                Instr::I64GeUImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xe11e8b930ba0afed
                 }
-                Instr::F32Eq { lhs, .. } => 
+                ////////////////////////////////////////////////////////////////////////
+                Instr::F32Eq { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xc3587b028ec7b7d7
                 }
-                Instr::F64Eq { lhs, .. } =>
+                Instr::F64Eq { result, lhs, rhs } =>
                 {
                     self.get_register(lhs).to_bits() ^ 0x90fa962604933679
                 }
-                Instr::F32Ne { lhs, .. } => 
+                Instr::F32Ne { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xe8b028b8a40b6323
                 }
-                Instr::F64Ne { lhs, .. } => 
+                Instr::F64Ne { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xe511c632ed75d0ad 
                 }
-                Instr::F32Lt { lhs, .. } => 
+                Instr::F32Lt { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xafe8adc3497d922f 
                 }
-                Instr::F64Lt { lhs, .. } => 
+                Instr::F64Lt { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xa24d51fe3b08563d 
                 }
-                Instr::F32Le { result, lhs, .. } => 
+                Instr::F32Le { result, lhs, rhs } => 
                 {
-                    // note: if we mix lhs into our signature here it starts to differ across x86/arm.
-                    // lhs on arm is different than on x86.
-                    // seems to be limited to this instruction only from my testing (strange?)
                     self.get_register(lhs).to_bits() ^ 0xa9470d623de1df2f
                 }
-                Instr::F64Le { lhs, .. } => 
+                Instr::F64Le { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xe5e889a7f2d74d67
                 }
-                Instr::F32Gt { lhs, .. } => 
+                Instr::F32Gt { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0x8cbe5aa7efd2dac5
                 }
-                Instr::F64Gt { lhs, .. } => 
+                Instr::F64Gt { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xa2b5a501d74cc69b 
                 }
-                Instr::F32Ge { lhs, .. } => 
+                Instr::F32Ge { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0x9103bfb43045fc5b
                 }
-                Instr::F64Ge { lhs, .. } => 
+                Instr::F64Ge { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xe4832a9c5a4a0741 
                 }
-                Instr::I32Clz { input, .. } => {
+                ////////////////////////////////////////////////////////////////////////
+                Instr::I32Clz { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xd0b363eee33e2a75
                 }
-                Instr::I64Clz { input, .. } => {
+                Instr::I64Clz { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xbb13e80b90e6d539
                 }
-                Instr::I32Ctz { input, .. } => {
+                Instr::I32Ctz { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xa867670e58678389
                 }
-                Instr::I64Ctz { input, .. } => {
+                Instr::I64Ctz { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0x8ad83f5db31d4957
                 }
-                Instr::I32Popcnt { input, .. } => {
+                Instr::I32Popcnt { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xd8ad8c4a45f7cd09
                 }
-                Instr::I64Popcnt { input, .. } => {
+                Instr::I64Popcnt { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xb9603f856bc14e5b
                 }
-                Instr::I32Add { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xa1f888c0cefc7b6d,
-                Instr::I64Add { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xba1adc988a80490f,
-                Instr::I32AddImm16 { lhs, .. } => {
+                Instr::I32Add { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xa1f888c0cefc7b6d
+                }
+                Instr::I64Add { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xba1adc988a80490f
+                }
+                Instr::I32AddImm16 { result, lhs, rhs } => {
                     self.get_register(lhs).to_bits() ^ 0x8bc5e0c56da6ee3d
                 }
-                Instr::I64AddImm16 { lhs, .. } => {
+                Instr::I64AddImm16 { result, lhs, rhs } => {
                     self.get_register(lhs).to_bits() ^ 0xf75f1d741e812869
                 }
-                Instr::I32Sub { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xf095a662a345025f,
-                Instr::I64Sub { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xb251e2585fd105c7,
-                Instr::I32Mul { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xc36cfc74fa61f2b3,
-                Instr::I64Mul { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xe9fe8ad570b71a99,
-                Instr::I32MulImm16 { lhs, .. } => {
+                Instr::I32Sub { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xf095a662a345025f
+                }
+                Instr::I64Sub { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xb251e2585fd105c7
+                }
+                Instr::I32Mul { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xc36cfc74fa61f2b3
+                }
+                Instr::I64Mul { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xe9fe8ad570b71a99
+                }
+                Instr::I32MulImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0x99c04a0680397c59
                 }
-                Instr::I64MulImm16 { lhs, .. } => {
+                Instr::I64MulImm16 { result, lhs, rhs } => {
                     self.get_register(lhs).to_bits() ^ 0xa461c2db76abc31f
                 }
-                Instr::I32DivS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xd8e9ed1b036c4299,
-                Instr::I64DivS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xc18a29741fec7821,
-                Instr::I32DivU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0x98f910b2a2344797,
-                Instr::I64DivU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xe4e5f443dafb6781,
-                Instr::I32RemS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0x9f03cbda2aa5fa45,
-                Instr::I64RemS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xccf3ffab51808eaf,
-                Instr::I32RemU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xc543d9e99bfe04db,
-                Instr::I64RemU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0x9f9e5bd14453abf7,
-                Instr::I32And { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xda40caeb3a552221,
-                Instr::I32AndEqz { lhs, .. } => {
+                Instr::I32DivS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xd8e9ed1b036c4299
+                }
+                Instr::I64DivS { result, lhs, rhs } =>
+                { 
+                    self.get_register(lhs).to_bits() ^ 0xc18a29741fec7821
+                }
+                Instr::I32DivU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0x98f910b2a2344797
+                }
+                Instr::I64DivU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xe4e5f443dafb6781
+                }
+                Instr::I32RemS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0x9f03cbda2aa5fa45
+                }
+                Instr::I64RemS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xccf3ffab51808eaf
+                }
+                Instr::I32RemU { result, lhs, rhs } =>
+                { 
+                    self.get_register(lhs).to_bits() ^ 0xc543d9e99bfe04db
+                }
+                Instr::I64RemU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0x9f9e5bd14453abf7
+                }
+                ////////////////////////////////////////////////////////////////////////
+                Instr::I32And { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xda40caeb3a552221
+                }
+                Instr::I32AndEqz { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xdae0c4aaf21a2375
                 }
-                Instr::I32AndEqzImm16 { lhs, .. } => {
+                Instr::I32AndEqzImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xe3b2a67a5da4fa6b
                 }
-                Instr::I32AndImm16 { lhs, .. } => {
+                Instr::I32AndImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0x8698e382452765f1
                 }
-                Instr::I64And { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xf96e3bc1640f67cd,
-                Instr::I64AndImm16 { lhs, .. } => {
+                Instr::I64And { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xf96e3bc1640f67cd
+                }
+                Instr::I64AndImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xcb4730c03868c6c9
                 }
-                Instr::I32Or { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xfe54c1a4cc88dbfd,
-                Instr::I32OrEqz { lhs, .. } => {
+                Instr::I32Or { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xfe54c1a4cc88dbfd
+                }
+                Instr::I32OrEqz { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0x81c4ae5533789a77
                 }
-                Instr::I32OrEqzImm16 { lhs, .. } => {
+                Instr::I32OrEqzImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xd5a79e8c5ff0d4f7
                 }
-                Instr::I32OrImm16 { lhs, .. } => {
+                Instr::I32OrImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0x907c4d22bec999ad
                 }
-                Instr::I64Or { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xdc758f1076325dcf,
-                Instr::I64OrImm16 { lhs, .. } => {
+                Instr::I64Or { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xdc758f1076325dcf
+                }
+                Instr::I64OrImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xcea9b6298da032eb
                 }
-                Instr::I32Xor { lhs, .. } => self.get_register(lhs).to_bits() ^ 0x820cea6beee5132b,
-                Instr::I32XorEqz { lhs, .. } => {
+                Instr::I32Xor { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0x820cea6beee5132b
+                }
+                Instr::I32XorEqz { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xfb5646a229eba923
                 }
-                Instr::I32XorEqzImm16 { lhs, .. } => {
+                Instr::I32XorEqzImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xa3d2eee0dbef491f
                 }
-                Instr::I32XorImm16 { lhs, .. } => {
+                Instr::I32XorImm16 { result, lhs, rhs } =>
+                {
                     self.get_register(lhs).to_bits() ^ 0xe0802ae028ddf527
                 }
-                Instr::I64Xor { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xcf8b3ddb8044776f,
-                Instr::I64XorImm16 { lhs, .. } => {
+                Instr::I64Xor { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xcf8b3ddb8044776f
+                }
+                Instr::I64XorImm16 { result, lhs, rhs } => 
+                {
                     self.get_register(lhs).to_bits() ^ 0xa84e47947f7723ad
                 }
-                Instr::I32Shl { lhs, .. } => self.get_register(lhs).to_bits() ^ 0x997deb70c648fa15,
-                Instr::I64Shl { lhs, .. } => self.get_register(lhs).to_bits() ^ 0x80f706f88d804a25,
-                Instr::I32ShrU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0x949b3946cd09a095,
-                Instr::I64ShrU { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xbc8d8ae8fafe0cb5,
-                Instr::I32ShrS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xe9925858193a7679,
-                Instr::I64ShrS { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xfb846cd977392cf3,
-                Instr::I32Rotl { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xdfd1ecfe45e3e365,
-                Instr::I64Rotl { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xc2c0280be48f6e2b,
-                Instr::I32Rotr { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xfce450167abfef91,
-                Instr::I64Rotr { lhs, .. } => self.get_register(lhs).to_bits() ^ 0xd35af32013838db5,
-                Instr::F32Abs { input, .. } => 
+                Instr::I32Shl { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0x997deb70c648fa15
+                }
+                Instr::I64Shl { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0x80f706f88d804a25
+                }
+                Instr::I32ShrU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0x949b3946cd09a095
+                }
+                Instr::I64ShrU { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xbc8d8ae8fafe0cb5
+                }
+                Instr::I32ShrS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xe9925858193a7679
+                }
+                Instr::I64ShrS { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xfb846cd977392cf3
+                }
+                Instr::I32Rotl { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xdfd1ecfe45e3e365
+                }
+                Instr::I64Rotl { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xc2c0280be48f6e2b
+                }
+                Instr::I32Rotr { result, lhs, rhs } =>
+                { 
+                    self.get_register(lhs).to_bits() ^ 0xfce450167abfef91
+                }
+                Instr::I64Rotr { result, lhs, rhs } => 
+                {
+                    self.get_register(lhs).to_bits() ^ 0xd35af32013838db5
+                }
+                ////////////////////////////////////////////////////////////////////////
+                Instr::F32Abs { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xcd5c2fff391d82cb
                 }
-                Instr::F64Abs { input, .. } => 
+                Instr::F64Abs { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xc4736057bf6ce827
                 }
-                Instr::F32Neg { input, .. } => 
+                Instr::F32Neg { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xd366f959bf938435
                 }
-                Instr::F64Neg { input, .. } => 
+                Instr::F64Neg { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0x8c01a158032456c5
                 }
-                Instr::F32Ceil { input, .. } => 
+                Instr::F32Ceil { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xf5684f567a1e5c81
                 }
-                Instr::F64Ceil { input, .. } => 
+                Instr::F64Ceil { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xbc6729b56b5bf64f
                 }
-                Instr::F32Floor { input, .. } => 
+                Instr::F32Floor { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xc3397446971c7b1b
                 }
-                Instr::F64Floor { input, .. } => 
+                Instr::F64Floor { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xc21648fabc149443 
                 }
-                Instr::F32Trunc { input, .. } => 
+                Instr::F32Trunc { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0x930c87d1457a0b2f
                 }
-                Instr::F64Trunc { input, .. } => 
+                Instr::F64Trunc { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xc457947a5515448d 
                 }
-                Instr::F32Nearest { input, .. } => 
+                Instr::F32Nearest { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xdcbd8018d58a0133 
                 }
-                Instr::F64Nearest { input, .. } => 
+                Instr::F64Nearest { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xe719d229d8dc9d11
                 }
-                Instr::F32Sqrt { input, .. } =>
+                Instr::F32Sqrt { result, input } =>
                 {
                     self.get_register(input).to_bits() ^ 0x8e031a9674797f6f
                 }
-                Instr::F64Sqrt { input, .. } => 
+                Instr::F64Sqrt { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xede241e1bdbf8add 
                 }
-                Instr::F32Add { lhs, .. } => 
+                ////////////////////////////////////////////////////////////////////////
+                Instr::F32Add { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xc0246fd5a4fa2569 
                 }
-                Instr::F64Add { lhs, .. } => 
+                Instr::F64Add { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xae61b186b8d627b1 
                 }
-                Instr::F32Sub { lhs, .. } => 
+                Instr::F32Sub { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xf37398a1108c36cb
                 }
-                Instr::F64Sub { lhs, .. } => 
+                Instr::F64Sub { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xaaf86176c0dc89f5
                 }
-                Instr::F32Mul { lhs, .. } => 
+                Instr::F32Mul { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xbe5eb79b83c0c7b1 
                 }
-                Instr::F64Mul { lhs, .. } => 
+                Instr::F64Mul { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0x9b200d1c1640bf0d 
                 }
-                Instr::F32Div { lhs, .. } => 
+                Instr::F32Div { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xd22d29503c878647 
                 }
-                Instr::F64Div { lhs, .. } => 
+                Instr::F64Div { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0x91b08c54e524bb09 
                 }
-                Instr::F32Min { lhs, .. } => 
+                Instr::F32Min { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xf83af276dd4b617f 
                 }
-                Instr::F64Min { lhs, .. } => 
+                Instr::F64Min { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xeb5d7d82375f7be7
                 }
-                Instr::F32Max { lhs, .. } => 
+                Instr::F32Max { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0x8f4d06f60f1c84fb 
                 }
-                Instr::F64Max { lhs, .. } => 
+                Instr::F64Max { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xb24f6877be71ebd5 
                 }
-                Instr::F32Copysign { lhs, .. } => 
+                Instr::F32Copysign { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xec122620e993dfcd
                 }
-                Instr::F64Copysign { lhs, .. } => 
+                Instr::F64Copysign { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0xf27f1850006566c9 
                 }
-                Instr::F32CopysignImm { lhs, .. } => 
+                Instr::F32CopysignImm { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0x94d19450082a4ce9 
                 }
-                Instr::F64CopysignImm { lhs, .. } => 
+                Instr::F64CopysignImm { result, lhs, rhs } => 
                 {
                     self.get_register(lhs).to_bits() ^ 0x84b094c8c0503805
                 }
-                Instr::I32WrapI64 { input, .. } => {
+                ////////////////////////////////////////////////////////////////////////
+                Instr::I32WrapI64 { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xd7348da1051ffdf5
                 }
-                Instr::I32TruncF32S { input, .. } =>
+                Instr::I32TruncF32S { result, input } =>
                 {
                     self.get_register(input).to_bits() ^ 0xa8edf1813c31175b
                 }
-                Instr::I32TruncF32U { input, .. } => 
+                Instr::I32TruncF32U { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xf980305a8ba3be0f
                 }
-                Instr::I32TruncF64S { input, .. } => 
+                Instr::I32TruncF64S { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xb982c8f45dcd5731
                 }
-                Instr::I32TruncF64U { input, .. } =>
+                Instr::I32TruncF64U { result, input } =>
                 {
                     self.get_register(input).to_bits() ^ 0x9ca1670d1e934f45 
                 }
-                Instr::I64TruncF32S { input, .. } => 
+                Instr::I64TruncF32S { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xeb2506c7a7cfe6f7 
                 }
-                Instr::I64TruncF32U { input, .. } => 
+                Instr::I64TruncF32U { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xa230e0381f36668d
                 }
-                Instr::I64TruncF64S { input, .. } => 
+                Instr::I64TruncF64S { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xce02765ab94df325
                 }
-                Instr::I64TruncF64U { input, .. } => 
+                Instr::I64TruncF64U { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xb39253799e21a72d
                 }
-                Instr::I32TruncSatF32S { input, .. } => 
+                Instr::I32TruncSatF32S { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xa164fb50eec581d3
                 }
-                Instr::I32TruncSatF32U { input, .. } => 
+                Instr::I32TruncSatF32U { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xabac89637bdb1d8f
                 }
-                Instr::I32TruncSatF64S { input, .. } => 
+                Instr::I32TruncSatF64S { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xe8b8c4421046aedd 
                 }
-                Instr::I32TruncSatF64U { input, .. } => 
+                Instr::I32TruncSatF64U { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0x91c87015a56a944d
                 }
-                Instr::I64TruncSatF32S { input, .. } => 
+                Instr::I64TruncSatF32S { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xb909e169382afddd
                 }
-                Instr::I64TruncSatF32U { input, .. } => 
+                Instr::I64TruncSatF32U { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xc6f884d2705bf2d3
                 }
-                Instr::I64TruncSatF64S { input, .. } =>
+                Instr::I64TruncSatF64S { result, input } =>
                 {
                     self.get_register(input).to_bits() ^ 0xa5e8386963664fa3
                 }
-                Instr::I64TruncSatF64U { input, .. } =>
+                Instr::I64TruncSatF64U { result, input } =>
                 {
                     self.get_register(input).to_bits() ^ 0xa43800f9e4975aff
                 } 
-                Instr::I32Extend8S { input, .. } => {
+                Instr::I32Extend8S { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xdecfc0dc5cb809af
                 }
-                Instr::I32Extend16S { input, .. } => {
+                Instr::I32Extend16S { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xcdf6bb7756026125
                 }
-                Instr::I64Extend8S { input, .. } => {
+                Instr::I64Extend8S { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xb906176cee2380bf
                 }
-                Instr::I64Extend16S { input, .. } => {
+                Instr::I64Extend16S { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xf0382669ed7a55f1
                 }
-                Instr::I64Extend32S { input, .. } => {
+                Instr::I64Extend32S { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xb61b2de5652d06e9
                 }
-                Instr::F32DemoteF64 { input, .. } => 
+                Instr::F32DemoteF64 { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xbf82e5dd4495233b
                 }
-                Instr::F64PromoteF32 { input, .. } => 
+                Instr::F64PromoteF32 { result, input } => 
                 {
                     self.get_register(input).to_bits() ^ 0xf42a79d7ed7c17c
                 }
-                Instr::F32ConvertI32S { input, .. } => {
+                Instr::F32ConvertI32S { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0x9e65030287165e29
                 }
-                Instr::F32ConvertI32U { input, .. } => {
+                Instr::F32ConvertI32U { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xe244f0acd2209f0b
                 }
-                Instr::F32ConvertI64S { input, .. } => {
+                Instr::F32ConvertI64S { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xd007d6d9333c7405
                 }
-                Instr::F32ConvertI64U { input, .. } => {
+                Instr::F32ConvertI64U { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xf31a7af87a7b7f61
                 }
-                Instr::F64ConvertI32S { input, .. } => {
+                Instr::F64ConvertI32S { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xbef1a0dfa7540b4d
                 }
-                Instr::F64ConvertI32U { input, .. } => {
+                Instr::F64ConvertI32U { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xa168200e59e18dcd
                 }
-                Instr::F64ConvertI64S { input, .. } => {
+                Instr::F64ConvertI64S { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0xb3a2d5946ee565e3
                 }
-                Instr::F64ConvertI64U { input, .. } => {
+                Instr::F64ConvertI64U { result, input } => 
+                {
                     self.get_register(input).to_bits() ^ 0x92ad2f2873e8fbc5
                 }
                 _ => 0xf360371a61b48ca1,
