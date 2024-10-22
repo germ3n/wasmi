@@ -667,51 +667,51 @@ impl<'engine> Executor<'engine> {
                 ////////////////////////////////////////////////////////////////////////
                 Instr::F32Eq { result, lhs, rhs } => 
                 {
-                    self.get_register(lhs).to_bits() ^ 0xc3587b028ec7b7d7
+                    /*self.get_register(lhs).to_bits() ^ */0xc3587b028ec7b7d7
                 }
                 Instr::F64Eq { result, lhs, rhs } =>
                 {
-                    self.get_register(lhs).to_bits() ^ 0x90fa962604933679
+                    /*self.get_register(lhs).to_bits() ^ */0x90fa962604933679
                 }
                 Instr::F32Ne { result, lhs, rhs } => 
                 {
-                    self.get_register(lhs).to_bits() ^ 0xe8b028b8a40b6323
+                    /*self.get_register(lhs).to_bits() ^ */0xe8b028b8a40b6323
                 }
                 Instr::F64Ne { result, lhs, rhs } => 
                 {
-                    self.get_register(lhs).to_bits() ^ 0xe511c632ed75d0ad 
+                    /*self.get_register(lhs).to_bits() ^ */0xe511c632ed75d0ad 
                 }
                 Instr::F32Lt { result, lhs, rhs } => 
                 {
-                    self.get_register(lhs).to_bits() ^ 0xafe8adc3497d922f 
+                    /*self.get_register(lhs).to_bits() ^ */0xafe8adc3497d922f 
                 }
                 Instr::F64Lt { result, lhs, rhs } => 
                 {
-                    self.get_register(lhs).to_bits() ^ 0xa24d51fe3b08563d 
+                    /*self.get_register(lhs).to_bits() ^ */0xa24d51fe3b08563d 
                 }
                 Instr::F32Le { result, lhs, rhs } => 
                 {
-                    self.get_register(lhs).to_bits() ^ 0xa9470d623de1df2f
+                    /*self.get_register(lhs).to_bits() ^ */0xa9470d623de1df2f
                 }
                 Instr::F64Le { result, lhs, rhs } => 
                 {
-                    self.get_register(lhs).to_bits() ^ 0xe5e889a7f2d74d67
+                    /*self.get_register(lhs).to_bits() ^ */0xe5e889a7f2d74d67
                 }
                 Instr::F32Gt { result, lhs, rhs } => 
                 {
-                    self.get_register(lhs).to_bits() ^ 0x8cbe5aa7efd2dac5
+                    /*self.get_register(lhs).to_bits() ^ */0x8cbe5aa7efd2dac5
                 }
                 Instr::F64Gt { result, lhs, rhs } => 
                 {
-                    self.get_register(lhs).to_bits() ^ 0xa2b5a501d74cc69b 
+                    /*self.get_register(lhs).to_bits() ^ */0xa2b5a501d74cc69b 
                 }
                 Instr::F32Ge { result, lhs, rhs } => 
                 {
-                    self.get_register(lhs).to_bits() ^ 0x9103bfb43045fc5b
+                    /*self.get_register(lhs).to_bits() ^ */0x9103bfb43045fc5b
                 }
                 Instr::F64Ge { result, lhs, rhs } => 
                 {
-                    self.get_register(lhs).to_bits() ^ 0xe4832a9c5a4a0741 
+                    /*self.get_register(lhs).to_bits() ^ */0xe4832a9c5a4a0741 
                 }
                 ////////////////////////////////////////////////////////////////////////
                 Instr::I32Clz { result, input } => 
