@@ -607,12 +607,12 @@ impl<'engine> Executor<'engine> {
                 {
                     self.get_register(lhs).to_bits() ^ 0xa24d51fe3b08563d 
                 }
-                Instr::F32Le { lhs, .. } => 
+                Instr::F32Le { result, lhs, .. } => 
                 {
                     // note: if we mix lhs into our signature here it starts to differ across x86/arm.
                     // lhs on arm is different than on x86.
                     // seems to be limited to this instruction only from my testing (strange?)
-                    0xa9470d623de1df2f
+                    self.get_register(lhs).to_bits() ^ 0xa9470d623de1df2f
                 }
                 Instr::F64Le { lhs, .. } => 
                 {
