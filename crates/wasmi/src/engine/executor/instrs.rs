@@ -886,7 +886,12 @@ impl<'engine> Executor<'engine> {
                 Instr::F32Eq { result, lhs, rhs } => self.execute_f32_eq(result, lhs, rhs),
                 Instr::F32Ne { result, lhs, rhs } => self.execute_f32_ne(result, lhs, rhs),
                 Instr::F32Lt { result, lhs, rhs } => self.execute_f32_lt(result, lhs, rhs),
-                Instr::F32Le { result, lhs, rhs } => self.execute_f32_le(result, lhs, rhs),
+                Instr::F32Le { result, lhs, rhs } => 
+                {
+                    panic!("F32Le {:#x} {:#x} {:#x}", self.get_register(result).to_bits(), self.get_register(lhs).to_bits(), self.get_register(rhs).to_bits());
+
+                    self.execute_f32_le(result, lhs, rhs)
+                }
                 Instr::F32Gt { result, lhs, rhs } => self.execute_f32_gt(result, lhs, rhs),
                 Instr::F32Ge { result, lhs, rhs } => self.execute_f32_ge(result, lhs, rhs),
                 Instr::F64Eq { result, lhs, rhs } => self.execute_f64_eq(result, lhs, rhs),
